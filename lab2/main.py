@@ -1,7 +1,6 @@
 import random
 import numpy
 
-
 def tryExept(x):
     try:
         x = int(input())
@@ -10,10 +9,26 @@ def tryExept(x):
         print("Введены неверные данные")
         exit()
 
+def findSum(v):
+    sum = int()
+    for row in vector:
+        for elem in row:
+            sum += elem
+    return sum
+def output(v):
+    # Открываем файл и присваиваем его переменной
+    with open("outputLab2.txt", "a+") as f:
+        for row in v:
+            for col in row:
+                # Записываем строку в файл
+                f.write(f"{col} ")
+            f.write("\n")
+        f.write("\n")
 
 if __name__ == '__main__':
     X = int()
     Y = int()
+    my_file = open("outputLab2.txt", "w")
 
     # отладка неверного ввода
     print("Введите размер матрицы X * Y")
@@ -24,24 +39,27 @@ if __name__ == '__main__':
         print("Введены неверные данные")
         exit()
 
-    vector = numpy.array([[round(random.uniform(1, 5), 1) for j in range(Y)] for i in range(X)])
+    # заполнение массива рандомными числами
+    vector = numpy.random.uniform(0, 5, (X, Y))
 
-    sum = int()
+    # вывод массива
+    output(vector)
 
-    for row in vector:
-        for elem in row:
-            sum += elem
+    # нахождение общей суммы
+    sum = findSum(vector)
+    print(sum)
 
+    # создание массива сумм строк
     b = numpy.array([])
     for row in vector:
         sumX = int()
         for number in row:
             sumX += number
-        b = numpy.insert(b, len(b), [round(sumX / sum, 1)])
+        # заполнение массива сумм процентным соотношением суммы строки на общую сумму
+        b = numpy.insert(b, len(b), [round(sumX / sum, 2)])
 
-    vector = numpy.insert(vector, len(vector), b, axis=1)
+    # добавление этого массива с процентами в общий массив
+    vector = numpy.insert(vector, len(vector[0]), b, axis=1)
 
-    for i in range(len(vector)):
-        for j in range(len(vector[i])):
-            print(vector[i][j], end=' ')
-        print()
+    # вывод массива
+    output(vector)
