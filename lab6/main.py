@@ -8,6 +8,27 @@ import datetime
 db = SqliteDatabase('data.db')
 
 
+def parseToHtmlTable(strings):
+    stringi = ""
+    for x in strings:
+        stringi += "<tr>"
+        for y in x:
+            stringi += "<td>"
+            stringi += str(y)
+            stringi += "</td>"
+        stringi += "</tr>"
+    return stringi
+
+
+def add(number, fio, dataTime, text):
+    APPLab(
+        number=number,
+        fio=fio,
+        dateTime=dataTime,
+        text=text
+    ).save()
+
+
 class BaseModel(Model):
     class Meta:
         database = db
@@ -40,10 +61,10 @@ class APPLab(BaseModel):
 
         return records
 
-class Page(object):
 
+class Page(object):
     columns = {}
-    visit = {}
+    visit = ""
 
     def __init__(self, c, v):
         self.columns = c
@@ -62,18 +83,10 @@ class Page(object):
                         <caption>Lab6</caption>
                             <tr>
                                 {"".join([
-                                  "<th>" + i + "</th>"
-                                  for i in self.columns])}
+            "<th>" + i + "</th>"
+            for i in self.columns])}
                             </tr>   
-                                {"".join(["<tr>" + 
-                                      "<td>" + str(s.idx) + "</td>" + 
-                                      "<td>" + str(s.number) + "</td>" + 
-                                      "<td>" + str(s.fio)+ "</td>" + 
-                                      "<td>" + str(s.dateTime) + "</td>" +
-                                      "<td>" + str(s.text) + "</td>" +
-                                      "</tr>" 
-                                      for s in self.visit])}
-                            
+                                {stringi}
                     </table>
                 </body>
         </html>
@@ -84,17 +97,13 @@ class Page(object):
 if __name__ == '__main__':
     db.create_tables([APPLab])
     app = APPLab()
+    add(5, "F", datetime.datetime(2023, 4, 4, 18, 50), "Hello2")
 
     columns = app.getColumn()
     strings = app.getStrings()
-    visit = app.select()
 
-    cherrypy.quickstart(Page(columns, visit))
+    stringi = parseToHtmlTable(strings)
 
-    # APPLab(
-    #     number=2,
-    #     fio="test2",
-    #     dateTime=datetime.datetime(2023, 4, 4, 18, 50),
-    #     text="lol2"
-    # ).save()
+    cherrypy.quickstart(Page(columns, stringi))
+
     db.close()
