@@ -86,7 +86,10 @@ class Data() :
         return [rm for rm in self.data if len(rm.text) > value]
 
     def add_new(self, fio, date, text):
-        self.data.append(RowModel(len(self.data) + 1, fio, date, text))
+        if len(self.data) == 0:
+            self.data.append(RowModel(1, fio, date, text))
+        else:
+            self.data.append(RowModel(self.data[len(self.data) - 1].idx + 1, fio, date, text))
         self.save(self.file_path, self.data)
 
     @staticmethod
@@ -138,4 +141,4 @@ if __name__ == '__main__':
     print(f"\n{data[idx]}")
 
     # добавление строки
-    data.add_new("T E S T 2", "2027-02-02 15:15:00", "MDA")
+    data.add_new("T E S T 3", "2027-02-02 15:15:00", "MDA")
