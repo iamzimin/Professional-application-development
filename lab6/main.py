@@ -20,9 +20,9 @@ def parseToHtmlTable(strings):
     return stringi
 
 
-def add(number, fio, dataTime, text):
+def add(fio, dataTime, text):
     APPLab(
-        number=number,
+        #number=number,
         fio=fio,
         dateTime=dataTime,
         text=text
@@ -39,7 +39,7 @@ class APPLab(BaseModel):
         db_table = 'lab6'
 
     idx = PrimaryKeyField(unique=True)
-    number = IntegerField()
+    # number = IntegerField()
     fio = IntegerField()
     dateTime = DateTimeField()
     text = IntegerField()
@@ -97,7 +97,7 @@ class Page(object):
 if __name__ == '__main__':
     db.create_tables([APPLab])
     app = APPLab()
-    add(5, "F", datetime.datetime(2023, 4, 4, 18, 50), "Hello2")
+    add("C", datetime.datetime(2023, 4, 4, 18, 50), "Hello3")
 
     columns = app.getColumn()
     strings = app.getStrings()
