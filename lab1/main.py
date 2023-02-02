@@ -42,16 +42,22 @@ def withLib(A, B, DeleteList):
 
             point = -1
 
+def sze(list):
+    counter = 0
+    for item in list:
+        counter += 1
+    return counter
+
 def withoutLib(A, B, DeleteList):
     point = -1
 
-    for x in range(len(A)):
+    for x in range(sze(A)):
         if point == -1:
             if A[x] % 2 == 1:
                 point = x
-        if A[x] % 2 == 0 or x + 1 >= len(A):
+        if A[x] % 2 == 0 or x + 1 >= sze(A):
 
-            if x + 1 >= len(A):
+            if x + 1 >= sze(A):
                 end = x
             else:
                 end = x - 1
