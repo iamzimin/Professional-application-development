@@ -1,14 +1,28 @@
 from datetime import datetime
 import os, os.path
 
-class RowModel():
+class Row():
+    idx = 0
+
+    def __init__(self, idx: int):
+        self.idx = idx
+
+    def get_idx(self):
+        return self.idx
+
+    def set_idx(self, val):
+        self.idx = val
+
+
+
+class RowModel(Row):
     idx = 0
     fio = ""
     date = ""
     text = ""
 
     def __init__(self, idx: int, fio: str, date: str, text: str):
-        self.idx = idx
+        super().__init__(idx)
         self.fio = fio
         self.date = date
         self.text = text
@@ -24,7 +38,7 @@ class Data() :
     data = []
     pointer = 0
 
-    def __init__(self, path):
+    def __init__(self, path: str):
         self.file_path = path
         self.data = self.parse(self.file_path)
 
@@ -46,6 +60,15 @@ class Data() :
             z = self.data[self.pointer]
             self.pointer += 1
             return z
+
+    def __getitem__(self, item):
+        if not isinstance(item, int):
+            raise TypeError("Индекс должен быть целым числом.")
+
+        if 0 <= item < len(self.data):
+            return self.data[item]
+        else:
+            raise IndexError("Неверный индекс.")
 
     def generator(self):
         self.pointer = 0
@@ -110,13 +133,9 @@ if __name__ == '__main__':
     print('\n\n\nСортировка по значению' + '\n' + '_' * 128)
     data.output(data.select_len(70))
 
+    print('\n\n\nВыбор по индексу' + '\n' + '_' * 128)
+    idx = int(input("Индекс: "))
+    print(f"\n{data[idx]}")
+
     # добавление строки
-    # data.add_new("T E S T", "2027-12-15 15:15:00", "MDA")
-
-
-
-
-
-
-
-
+    data.add_new("T E S T 2", "2027-02-02 15:15:00", "MDA")

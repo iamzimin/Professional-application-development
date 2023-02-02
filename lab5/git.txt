@@ -1,0 +1,66 @@
+1)
+cd C:\Python projects\APP_lab5_git
+git init
+
+2)
+
+3)
+folder2
+test3.txt
+.xlsx
+
+4)
+git remote add origin https://github.com/iamzimin/APP_lab5_git.git
+git add .
+git commit -m "commit_1"
+git push origin master
+
+5)
+cd C:\Python projects\APP_lab5_git
+git add .
+git commit -m "commit_2"
+git push origin master
+
+6)
+cd C:\Python projects\APP_lab5_git
+git branch br1
+git checkout br1
+
+git add .
+git commit -m "br_commit_3"
+git push origin br1
+
+git add .
+git commit -m "br_commit_4"
+git push origin br2
+
+
+merge
+cd C:\Python projects\APP_lab5_git
+git checkout br1
+git merge br2
+
+
+
+
+git clone https://github.com/iamzimin/APP_lab5_git.git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
