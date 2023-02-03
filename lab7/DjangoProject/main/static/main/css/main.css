@@ -1,0 +1,50 @@
+aside {
+    float: left;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d
+}
+
+aside img {
+    width: 15vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+aside h3 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+aside ul {
+    list-style: none
+}
+
+aside ul li {
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    transition: all .2s ease;
+}
+
+aside ul li, aside ul a {
+    text-decoration: none;
+}
+
+aside ul li:hover, aside ul a:hover {
+    transform: scale(1.05);
+    color: #eb5959
+}
+
+main .features {
+    float: left;
+    color: #fff
+    margin-top: 10px;
+    text-align: center;
+    width: 75%;
+}
