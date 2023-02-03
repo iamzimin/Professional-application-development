@@ -20,13 +20,7 @@ def parseToHtmlTable(strings):
     return stringi
 
 
-def add(fio, dataTime, text):
-    APPLab(
-        #number=number,
-        fio=fio,
-        dateTime=dataTime,
-        text=text
-    ).save()
+
 
 
 class BaseModel(Model):
@@ -43,6 +37,20 @@ class APPLab(BaseModel):
     fio = IntegerField()
     dateTime = DateTimeField()
     text = IntegerField()
+
+    def Update(self, sid, fio, dateTime, text):
+        appLab = APPLab.get(idx=sid)
+        appLab.fio = fio
+        appLab.dateTime = dateTime
+        appLab.text = text
+        appLab.save()
+
+    def Add(self, fio, dataTime, text):
+        APPLab(
+            fio=fio,
+            dateTime=dataTime,
+            text=text
+        ).save()
 
     def getColumn(self):
         cursor = db.cursor()
@@ -82,9 +90,10 @@ class Page(object):
                     <table border="1">
                         <caption>Lab6</caption>
                             <tr>
-                                {"".join([
-            "<th>" + i + "</th>"
-            for i in self.columns])}
+                                {
+                                    "".join(["<th>" + i + "</th>"
+                                            for i in self.columns])
+                                }
                             </tr>   
                                 {stringi}
                     </table>
@@ -97,7 +106,8 @@ class Page(object):
 if __name__ == '__main__':
     db.create_tables([APPLab])
     app = APPLab()
-    add("C", datetime.datetime(2023, 4, 4, 18, 50), "Hello3")
+    # app.Add("C", datetime.datetime(2023, 4, 4, 18, 50), "Hello3")
+    app.Update(3, "Test", datetime.datetime(2025, 5, 5, 18, 50), "H")
 
     columns = app.getColumn()
     strings = app.getStrings()
