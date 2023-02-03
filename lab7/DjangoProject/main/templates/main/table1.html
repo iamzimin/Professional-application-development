@@ -14,12 +14,16 @@
             <th>ФИО</th>
             <th>Дата</th>
             <th>Текст</th>
+            <th>id клиента</th>
+            <th>id банка</th>
         </tr>
          {% for el in table1 %}
             <tr>
                 <td>{{ el.fio }}</td>
                 <td>{{ el.date }}</td>
                 <td>{{ el.text }}</td>
+                <td>{{ el.clientId }}</td>
+                <td>{{ el.bankId }}</td>
             </tr>
         {% endfor %}
     </table>
