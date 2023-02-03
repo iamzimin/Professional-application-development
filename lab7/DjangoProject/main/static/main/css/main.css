@@ -2,7 +2,7 @@
 aside {
     float: left;
     background: #FFFDFD;
-    width: 20%;
+    width: 21%;
     padding: 2.5%;
     height: 100vh;
     color: #fff;
@@ -42,11 +42,19 @@ aside ul li:hover, aside ul a:hover {
     color: #F57268
 }
 
-main .features {
+main .features h1 {
     float: left;
     color: #fff
     margin-top: 10px;
     text-align: center;
+    width: 75%;
+}
+
+.features p {
+    float: left;
+    color: #fff
+    margin-top: 10px;
+    margin-left: 50px;
     width: 75%;
 }
 
