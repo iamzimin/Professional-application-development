@@ -4,6 +4,7 @@ from .models import ClientInfo
 from .models import ClientGroup
 from .models import Bank
 from .models import BankType
+#
 
 
 def index(request):
