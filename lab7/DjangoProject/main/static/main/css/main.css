@@ -1,11 +1,12 @@
+
 aside {
     float: left;
-    background: #181818;
+    background: #FFFDFD;
     width: 20%;
     padding: 2.5%;
     height: 100vh;
     color: #fff;
-    border-right: 5px solid #4d4d4d
+    border-right: 5px solid #fff
 }
 
 aside img {
@@ -38,7 +39,7 @@ aside ul li, aside ul a {
 
 aside ul li:hover, aside ul a:hover {
     transform: scale(1.05);
-    color: #eb5959
+    color: #F57268
 }
 
 main .features {
@@ -47,4 +48,21 @@ main .features {
     margin-top: 10px;
     text-align: center;
     width: 75%;
+}
+
+table {
+    padding-top: 111px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+}
+
+table th {
+    padding: 5px;
+    border: 1px solid white;
+}
+
+table td {
+    padding: 5px;
+    border: 1px solid white;
 }

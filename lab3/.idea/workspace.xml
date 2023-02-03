@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="760b2e43-c956-4b09-a3e7-579dd70efeec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/DjangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/DjangoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/main/static/main/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/main/static/main/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/main/templates/main/table1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/main/templates/main/table1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/DjangoProject/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/DjangoProject/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "C:/Python projects/APP_labs"
+    "last_opened_file_path": "C:/Python projects/APP_labs/lab3"
   }
 }]]></component>
   <component name="RunManager">

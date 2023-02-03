@@ -1,16 +1,18 @@
 from django.shortcuts import render
+from .models import Table1
 
 
-def index(reuest):
-    return render(reuest, 'main/index.html')
+def index(request):
+    return render(request, 'main/index.html')
 
 
-def main(reuest):
+def main(request):
     data = {
         'title': 'Что это такое?'
     }
-    return render(reuest, 'main/main.html', data)
+    return render(request, 'main/main.html', data)
 
 
-def table1(reuest):
-    return render(reuest, 'main/table1.html')
+def table1(request):
+    tb1 = Table1.objects.all()
+    return render(request, 'main/table1.html', {'table1': tb1})
