@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Bank{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Банк</h1>
+    </div>
+    <table border="1">
+        <tr>
+            <th>Название банка</th>
+            <th>Адрес</th>
+            <th>Тип банка</th>
+        </tr>
+         {% for el in bank %}
+            <tr>
+                <td>{{ el.bankName }}</td>
+                <td>{{ el.address }}</td>
+                <td>{{ el.bankType }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+

@@ -23,7 +23,7 @@ class ClientInfo(models.Model):
     clientType = models.IntegerField('Тип клиента', default=0)
 
     def __str__(self):
-        return self.phoneNumber
+        return str(self.phoneNumber)
 
     class Meta:
         verbose_name = 'Информация о клиенте'
@@ -33,7 +33,7 @@ class ClientInfo(models.Model):
 class ClientGroup(models.Model):
     isRelible = models.BooleanField('Надёжный', default=False)
     isVIP = models.BooleanField('VIP', default=False)
-    type = models.BooleanField('Тип клиента')
+    type = models.CharField('Тип клиента', max_length=50)
 
     # def __str__(self):
     #     return self.phoneNumber
@@ -44,7 +44,7 @@ class ClientGroup(models.Model):
 
 
 class Bank(models.Model):
-    bankName = models.CharField('Адрес', max_length=50)
+    bankName = models.CharField('Название банка', max_length=50)
     address = models.CharField('Адрес', max_length=150)
     bankType = models.CharField('Тип банка', max_length=100)
 
@@ -57,8 +57,8 @@ class Bank(models.Model):
 
 
 class BankType(models.Model):
-    id = models.IntegerField('id банка', default=0)
-    type = models.CharField('Тип банка', max_length=100)
+    bankId = models.IntegerField('id банка', default=0)
+    bankType = models.CharField('Тип банка', max_length=100)
 
     # def __str__(self):
     #     return self.bankName

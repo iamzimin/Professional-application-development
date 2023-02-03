@@ -5,8 +5,8 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('main', views.main, name='home'),
     path('callHistory', views.callHistory, name='callHistory'),
-    path('table2', views.callHistory, name='table2'),
-    path('table3', views.callHistory, name='table3'),
-    path('table4', views.callHistory, name='table4'),
-    path('table5', views.callHistory, name='table5')
+    path('clientInfo', views.clientInfo, name='clientInfo'),
+    path('clientGroup', views.clientGroup, name='clientGroup'),
+    path('bank', views.bank, name='bank'),
+    path('bankType', views.bankType, name='bankType')
 ]

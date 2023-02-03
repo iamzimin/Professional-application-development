@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}ClientGroup{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Группы клиентов</h1>
+    </div>
+    <table border="1">
+        <tr>
+            <th>Надёжный</th>
+            <th>VIP</th>
+            <th>Тип клиента</th>
+        </tr>
+         {% for el in clientGroup %}
+            <tr>
+                <td>{{ el.isRelible }}</td>
+                <td>{{ el.isVIP }}</td>
+                <td>{{ el.type }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
