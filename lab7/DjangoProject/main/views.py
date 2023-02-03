@@ -6,7 +6,10 @@ def index(reuest):
 
 
 def main(reuest):
-    return render(reuest, 'main/main.html')
+    data = {
+        'title': 'Что это такое?'
+    }
+    return render(reuest, 'main/main.html', data)
 
 
 def table1(reuest):
