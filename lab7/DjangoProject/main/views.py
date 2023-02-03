@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Table1
+from .models import CallHistory
 
 
 def index(request):
@@ -13,6 +13,6 @@ def main(request):
     return render(request, 'main/main.html', data)
 
 
-def table1(request):
-    tb1 = Table1.objects.all()
-    return render(request, 'main/table1.html', {'table1': tb1})
+def callHistory(request):
+    ch = CallHistory.objects.all()
+    return render(request, 'main/callHistory.html', {'callHistory': ch})

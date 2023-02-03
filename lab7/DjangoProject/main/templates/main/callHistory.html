@@ -1,6 +1,6 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Table1{% endblock %}
+{% block title %}CallHistory{% endblock %}
 
 {% block content %}
     <div class="features">
@@ -14,7 +14,7 @@
             <th>id клиента</th>
             <th>id банка</th>
         </tr>
-         {% for el in table1 %}
+         {% for el in callHistory %}
             <tr>
                 <td>{{ el.fio }}</td>
                 <td>{{ el.date }}</td>
