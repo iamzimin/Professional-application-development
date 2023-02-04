@@ -74,3 +74,35 @@ table td {
     padding: 5px;
     border: 1px solid white;
 }
+
+#edit {
+    width: 35px;
+    display: block;
+}
+
+#delete {
+    width: 30px;
+    display: block;
+}
+
+#btn1 {
+    background: transparent;
+    border: 0px
+}
+
+#btn2 {
+    background: transparent;
+    border: 0px
+}
+
+.center {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#btn3 {
+
+    float: left;
+    color: #fff
+    margin-center: 50px;
+}

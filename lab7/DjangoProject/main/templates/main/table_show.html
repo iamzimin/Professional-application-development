@@ -1,4 +1,5 @@
 {% extends 'main/layout.html' %}
+{% load static %}
 
 {% block title %}Лаба 7{% endblock %}
 
@@ -11,13 +12,23 @@
             {% for name in names %}
             <td>{{ name }}</td>
             {% endfor %}
+            <td>Изменить</td>
+            <td>Удалить</td>
         </tr>
             {% for t in table %}
             <tr>
                 {% for v in t %}
                 <td> {{v}} </td>
                 {% endfor %}
+
+                <td><button id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}" alt=""></button></td>
+                <td><button id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}" alt="Кнопка «button»"></button></td>
             </tr>
             {% endfor %}
+
     </table>
+
+    <div class="center">
+    <button class="btn3">Добавить</button>
+    </div>
 {% endblock %}
