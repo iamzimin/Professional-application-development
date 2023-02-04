@@ -5,20 +5,29 @@
         {% csrf_token %}
 
 <!--            <div class="center">-->
-            {% csrf_token %}
-            {% for d in form %}
+            {% if command == 'delete' %}
+                {% url 'table_show' idx %}
+            {% endif %}
 
-                {% if forloop.counter == 1 %} <div>{{names.1}}</div> {% endif %}
-                {% if forloop.counter == 2 %} <div>{{names.2}}</div> {% endif %}
-                {% if forloop.counter == 3 %} <div>{{names.3}}</div> {% endif %}
-                {% if forloop.counter == 4 %} <div>{{names.4}}</div> {% endif %}
-                {% if forloop.counter == 5 %} <div>{{names.5}}</div> {% endif %}
-                {% if forloop.counter == 6 %} <div>{{names.6}}</div> {% endif %}
-                {% if forloop.counter == 7 %} <div>{{names.7}}</div> {% endif %}
-                {% if forloop.counter == 8 %} <div>{{names.8}}</div> {% endif %}
-                {% if forloop.counter == 9 %} <div>{{names.9}}</div> {% endif %}
+            {% if command == 'edit' %}
+                {% csrf_token %}
+                {% for d in form %}
 
-                {{d}}
-            {% endfor %}
+                    {% if forloop.counter == 1 %} <div>{{names.1}}</div> {% endif %}
+                    {% if forloop.counter == 2 %} <div>{{names.2}}</div> {% endif %}
+                    {% if forloop.counter == 3 %} <div>{{names.3}}</div> {% endif %}
+                    {% if forloop.counter == 4 %} <div>{{names.4}}</div> {% endif %}
+                    {% if forloop.counter == 5 %} <div>{{names.5}}</div> {% endif %}
+                    {% if forloop.counter == 6 %} <div>{{names.6}}</div> {% endif %}
+                    {% if forloop.counter == 7 %} <div>{{names.7}}</div> {% endif %}
+                    {% if forloop.counter == 8 %} <div>{{names.8}}</div> {% endif %}
+                    {% if forloop.counter == 9 %} <div>{{names.9}}</div> {% endif %}
+
+                    {{d}}
+                {% endfor %}
+            {% endif %}
+            <div style="margin-top: 15px">
+                <button class="btn-submit" type="submit"> Подтвердить</button>
+            </div>
 <!--            </div>-->
 {% endblock %}

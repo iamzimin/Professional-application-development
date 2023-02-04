@@ -1,4 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.template.defaulttags import url
+
 from .models import *
 from .forms import *
 
@@ -45,10 +48,13 @@ def table_change(request, idx, el, command):
     form = [CallHistoryForm, ClientInfoForm, ClientGroupForm, BankForm, BankTypeForm]
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
 
-    #if command == 'delete':
-        #return render(request, 'main/table_change.html')
+    if command == 'delete':
+        #model[idx].objects.filter(id=el).delete()
+        # return render(request, '/main/table_show/' + str(idx) +'.html', {})
+        # return url('/main/table_show/' + str(idx) +'.html', {})
+        return render(request, 'main/table_change.html', {'form': form[idx], 'names': model[idx].names, 'command': command, 'idx': idx})
 
     if command == 'edit':
-        return render(request, 'main/table_change.html', {'form': form[idx], 'names': model[idx].names})
+        return render(request, 'main/table_change.html', {'form': form[idx], 'names': model[idx].names, 'command': command})
 
-    #pass
+    pass
