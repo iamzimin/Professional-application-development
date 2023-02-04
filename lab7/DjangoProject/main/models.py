@@ -9,6 +9,8 @@ class CallHistory(models.Model):
     clientId = models.ForeignKey('ClientInfo', on_delete=models.SET_DEFAULT, default=0)##################
     bankId = models.ForeignKey('Bank', on_delete=models.SET_DEFAULT, default=0)##########################
 
+    names = ["id", "ФИО", "Дата", "Текст", "id клиента", "id банка"]
+
     def __str__(self):
         return self.fio
 
@@ -22,6 +24,8 @@ class ClientInfo(models.Model):
     address = models.CharField('Адрес', max_length=150)
     age = models.IntegerField('Возраст', default=0)
     phoneNumber = models.IntegerField('Номер телефона', default=0)
+
+    names = ["id", "Адрес", "Возраст", "Номер телефона"]
 
     def __str__(self):
         return str(self.id)
@@ -37,6 +41,8 @@ class ClientGroup(models.Model):
     isVIP = models.BooleanField('VIP', default=False)
     type = models.CharField('Тип клиента', max_length=50)
 
+    names = ["id", "Надёжный", "VIP", "Тип клиента"]
+
     def __str__(self):
         return str(self.id)
 
@@ -51,6 +57,8 @@ class Bank(models.Model):
     address = models.CharField('Адрес', max_length=150)
     bankType = models.ManyToManyField('BankType')############################
 
+    names = ["id", "Название банка", "Адрес", "Тип банка"]
+
     def __str__(self):
         return self.bankName
 
@@ -63,6 +71,8 @@ class BankType(models.Model):
     id = models.AutoField(primary_key=True)
     # bankId = models.IntegerField('id банка', default=0)
     bankType = models.CharField('Тип банка', max_length=100)
+
+    names = ["id", "Тип банка"]
 
     def __str__(self):
         return self.bankType

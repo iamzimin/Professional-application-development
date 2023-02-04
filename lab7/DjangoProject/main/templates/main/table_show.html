@@ -20,14 +20,14 @@
                 {% for k, v in t.items %}
                 <td> {{v}} </td>
                 {% endfor %}
-                <td><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}" alt=""></a></td>
-                <td><a id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}" alt="Кнопка «button»"></a></td>
+                <td><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}"></a></td>
+                <td><a href="{% url 'table_change' idx=table_id el=t.id command='delete' %}" id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}"></a></td>
             </tr>
             {% endfor %}
 
     </table>
 
     <div class="center">
-    <button class="btn3">Добавить</button>
+        <a href="{% url 'table_change' idx=table_id el=0 command='add' %}" id="btn3"></a>
     </div>
 {% endblock %}
