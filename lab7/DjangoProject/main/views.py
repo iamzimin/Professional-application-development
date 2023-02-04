@@ -45,29 +45,29 @@ def table_view(request, idx):
     table = []
     names = []
     if idx == 0:
-        names = ["ФИО", "Дата", "Текст", "id клиента", "id банка"]
+        names = ["id", "ФИО", "Дата", "Текст", "id клиента", "id банка"]
         for m in CallHistory.objects.all():
-            table.append([m.fio, m.date, m.text, m.clientId, m.bankId])
+            table.append([m.id, m.fio, m.date, m.text, m.clientId, m.bankId])
 
     elif idx == 1:
-        names = ["Адрес", "Возраст", "Номер телефона"]
+        names = ["id", "Адрес", "Возраст", "Номер телефона"]
         for m in ClientInfo.objects.all():
-            table.append([m.address, m.age, m.phoneNumber])
+            table.append([m.id, m.address, m.age, m.phoneNumber])
 
     elif idx == 2:
-        names = ["Надёжный", "VIP", "Тип клиента"]
+        names = ["id", "Надёжный", "VIP", "Тип клиента"]
         for m in ClientGroup.objects.all():
-            table.append([m.isRelible, m.isVIP, m.type])
+            table.append([m.id, m.isRelible, m.isVIP, m.type])
 
     elif idx == 3:
-        names = ["Название банка", "Адрес", "Тип банка"]
+        names = ["id", "Название банка", "Адрес", "Тип банка"]
         for m in Bank.objects.all():
-            table.append([m.bankName, m.address, m.bankType])
+            table.append([m.id, m.bankName, m.address, ", ".join(map(str, m.bankType.all()))])
 
     elif idx == 4:
-        names = ["id банка", "Тип банка"]
+        names = ["id", "Тип банка"]
         for m in BankType.objects.all():
-            table.append([m.bankId, m.bankType])
+            table.append([m.id, m.bankType])
 
     return render(request, 'main/table_show.html', {'table': table, 'names': names})
 

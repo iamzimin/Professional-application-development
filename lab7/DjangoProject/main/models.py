@@ -2,6 +2,7 @@ from django.db import models
 
 
 class CallHistory(models.Model):
+    id = models.AutoField(primary_key=True)
     fio = models.CharField('ФИО', max_length=100)
     date = models.DateTimeField('Дата обращения')
     text = models.CharField('Тип обращения', max_length=300)
@@ -23,7 +24,7 @@ class ClientInfo(models.Model):
     phoneNumber = models.IntegerField('Номер телефона', default=0)
 
     def __str__(self):
-        return str(self.phoneNumber)
+        return str(self.id)
 
     class Meta:
         verbose_name = 'Информация о клиенте'
@@ -31,12 +32,13 @@ class ClientInfo(models.Model):
 
 
 class ClientGroup(models.Model):
+    id = models.AutoField(primary_key=True)
     isRelible = models.BooleanField('Надёжный', default=False)
     isVIP = models.BooleanField('VIP', default=False)
     type = models.CharField('Тип клиента', max_length=50)
 
-    # def __str__(self):
-    #     return self.phoneNumber
+    def __str__(self):
+        return str(self.id)
 
     class Meta:
         verbose_name = 'Группа клиентов'
@@ -44,6 +46,7 @@ class ClientGroup(models.Model):
 
 
 class Bank(models.Model):
+    id = models.AutoField(primary_key=True)
     bankName = models.CharField('Название банка', max_length=50)
     address = models.CharField('Адрес', max_length=150)
     bankType = models.ManyToManyField('BankType')############################
@@ -57,11 +60,12 @@ class Bank(models.Model):
 
 
 class BankType(models.Model):
-    bankId = models.IntegerField('id банка', default=0)
+    id = models.AutoField(primary_key=True)
+    # bankId = models.IntegerField('id банка', default=0)
     bankType = models.CharField('Тип банка', max_length=100)
 
-    # def __str__(self):
-    #     return self.bankName
+    def __str__(self):
+        return self.bankType
 
     class Meta:
         verbose_name = 'Тип банка'
