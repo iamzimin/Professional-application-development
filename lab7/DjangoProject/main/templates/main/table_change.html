@@ -2,55 +2,27 @@
 
 {% block content %}
 
-        {% csrf_token %}
 
-            {% if command == 'edit' %}
-                {% csrf_token %}
-                <form action="POST">
-                {% for d in form %}
+        <form action="POST">
+            {% csrf_token %}
+            {% for d in form %}
 
-                    {% if forloop.counter == 1 %} <div>{{names.1}} </div> {% endif %}
-                    {% if forloop.counter == 2 %} <div>{{names.2}}</div> {% endif %}
-                    {% if forloop.counter == 3 %} <div>{{names.3}}</div> {% endif %}
-                    {% if forloop.counter == 4 %} <div>{{names.4}}</div> {% endif %}
-                    {% if forloop.counter == 5 %} <div>{{names.5}}</div> {% endif %}
-                    {% if forloop.counter == 6 %} <div>{{names.6}}</div> {% endif %}
-                    {% if forloop.counter == 7 %} <div>{{names.7}}</div> {% endif %}
-                    {% if forloop.counter == 8 %} <div>{{names.8}}</div> {% endif %}
-                    {% if forloop.counter == 9 %} <div>{{names.9}}</div> {% endif %}
-                    {{d}}
+                {% if forloop.counter == 1 %} <div>{{names.1}}</div> {% endif %}
+                {% if forloop.counter == 2 %} <div>{{names.2}}</div> {% endif %}
+                {% if forloop.counter == 3 %} <div>{{names.3}}</div> {% endif %}
+                {% if forloop.counter == 4 %} <div>{{names.4}}</div> {% endif %}
+                {% if forloop.counter == 5 %} <div>{{names.5}}</div> {% endif %}
+                {% if forloop.counter == 6 %} <div>{{names.6}}</div> {% endif %}
+                {% if forloop.counter == 7 %} <div>{{names.7}}</div> {% endif %}
+                {% if forloop.counter == 8 %} <div>{{names.8}}</div> {% endif %}
+                {% if forloop.counter == 9 %} <div>{{names.9}}</div> {% endif %}
+                {{d}}
 
-                {% endfor %}
+            {% endfor %}
             <div style="margin-top: 15px">
                 <button class="btn-submit" type="submit"> Подтвердить</button>
             </div>
-                </form>
-            {% endif %}
-
-
-
-            {% if command == 'add' %}
-                {% csrf_token %}
-                <form action="POST">
-                {% for d in form %}
-
-                    {% if forloop.counter == 1 %} <div>{{names.1}} </div> {% endif %}
-                    {% if forloop.counter == 2 %} <div>{{names.2}}</div> {% endif %}
-                    {% if forloop.counter == 3 %} <div>{{names.3}}</div> {% endif %}
-                    {% if forloop.counter == 4 %} <div>{{names.4}}</div> {% endif %}
-                    {% if forloop.counter == 5 %} <div>{{names.5}}</div> {% endif %}
-                    {% if forloop.counter == 6 %} <div>{{names.6}}</div> {% endif %}
-                    {% if forloop.counter == 7 %} <div>{{names.7}}</div> {% endif %}
-                    {% if forloop.counter == 8 %} <div>{{names.8}}</div> {% endif %}
-                    {% if forloop.counter == 9 %} <div>{{names.9}}</div> {% endif %}
-                    {{d}}
-
-                {% endfor %}
-            <div style="margin-top: 15px">
-                <button class="btn-submit" type="submit"> Подтвердить</button>
-            </div>
-                </form>
-            {% endif %}
+        </form>
 
 
 

@@ -48,11 +48,12 @@ def table_change(request, idx, el, command):
     form = [CallHistoryForm, ClientInfoForm, ClientGroupForm, BankForm, BankTypeForm]
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
 
-    if request.method == 'POST':###################################### ХРЕНЬ
-        forma = form[idx](request.POST)
-        print(forma)
-        if forma.is_valid():
-            forma.save()
+    # if request.method == 'POST':###################################### ХРЕНЬ
+    #     forma = form[idx](request.POST)
+    #     print(forma)
+    #     print("123")
+    #     if forma.is_valid():
+    #         forma.save()
 
     if command == 'delete':#################################### РАБОАТЕТ
         model[idx].objects.filter(id=el).delete()
@@ -70,4 +71,4 @@ def table_change(request, idx, el, command):
         return render(request, 'main/table_change.html',
                       {'form': form[idx], 'names': model[idx].names, 'command': command})
 
-    return redirect('/table_show/' + str(idx))
+    # return redirect('/table_show/' + str(idx))
