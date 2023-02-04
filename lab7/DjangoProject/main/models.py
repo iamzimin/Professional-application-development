@@ -5,9 +5,8 @@ class CallHistory(models.Model):
     fio = models.CharField('ФИО', max_length=100)
     date = models.DateTimeField('Дата обращения')
     text = models.CharField('Тип обращения', max_length=300)
-    clientId = models.IntegerField('id клиента', default=0)
-    # clientId = models.ForeignKey('id клиента', on_delete=models.SET_NULL)#############
-    bankId = models.IntegerField('id банка', default=0)
+    clientId = models.ForeignKey('ClientInfo', on_delete=models.SET_DEFAULT, default=0)##################
+    bankId = models.ForeignKey('Bank', on_delete=models.SET_DEFAULT, default=0)##########################
 
     def __str__(self):
         return self.fio
@@ -18,6 +17,7 @@ class CallHistory(models.Model):
 
 
 class ClientInfo(models.Model):
+    id = models.OneToOneField('ClientGroup', primary_key=True, on_delete=models.CASCADE)
     address = models.CharField('Адрес', max_length=150)
     age = models.IntegerField('Возраст', default=0)
     phoneNumber = models.IntegerField('Номер телефона', default=0)
@@ -46,7 +46,7 @@ class ClientGroup(models.Model):
 class Bank(models.Model):
     bankName = models.CharField('Название банка', max_length=50)
     address = models.CharField('Адрес', max_length=150)
-    bankType = models.CharField('Тип банка', max_length=100)
+    bankType = models.ManyToManyField('BankType')############################
 
     def __str__(self):
         return self.bankName
