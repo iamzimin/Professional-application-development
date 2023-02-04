@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.defaulttags import url
 
 from .models import *
@@ -49,10 +49,8 @@ def table_change(request, idx, el, command):
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
 
     if command == 'delete':
-        #model[idx].objects.filter(id=el).delete()
-        # return render(request, '/main/table_show/' + str(idx) +'.html', {})
-        # return url('/main/table_show/' + str(idx) +'.html', {})
-        return render(request, 'main/table_change.html', {'form': form[idx], 'names': model[idx].names, 'command': command, 'idx': idx})
+        model[idx].objects.filter(id=el).delete()
+        return redirect('/table_show/' + str(idx))
 
     if command == 'edit':
         return render(request, 'main/table_change.html', {'form': form[idx], 'names': model[idx].names, 'command': command})
