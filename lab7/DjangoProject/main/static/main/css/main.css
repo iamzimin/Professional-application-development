@@ -101,8 +101,6 @@ table td {
 }
 
 #btn3 {
-
-    float: left;
-    color: #fff
-    margin-center: 50px;
+    color: white;
+    text-decoration: none;
 }
