@@ -5,8 +5,8 @@ class CallHistory(models.Model):
     fio = models.CharField('ФИО', max_length=100)
     date = models.DateTimeField('Дата обращения')
     text = models.CharField('Тип обращения', max_length=300)
-    # clientId = models.IntegerField('id клиента', default=0)
-    clientId = models.ForeignKey('id клиента', on_delete=models.SET_NULL)#############
+    clientId = models.IntegerField('id клиента', default=0)
+    # clientId = models.ForeignKey('id клиента', on_delete=models.SET_NULL)#############
     bankId = models.IntegerField('id банка', default=0)
 
     def __str__(self):
