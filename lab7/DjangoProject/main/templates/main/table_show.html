@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Лаба 7{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Таблица</h1>
+    </div>
+    <table border="1">
+        <tr>
+            {% for name in names %}
+            <td>{{ name }}</td>
+            {% endfor %}
+        </tr>
+            {% for t in table %}
+            <tr>
+                {% for v in t %}
+                <td> {{v}} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+    </table>
+{% endblock %}

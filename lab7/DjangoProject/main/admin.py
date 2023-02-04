@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import CallHistory
-from .models import ClientInfo
-from .models import ClientGroup
-from .models import Bank
-from .models import BankType
+from .models import *
 
 admin.site.register(CallHistory)
 admin.site.register(ClientInfo)

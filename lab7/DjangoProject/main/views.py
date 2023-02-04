@@ -16,27 +16,58 @@ def main(request):
     return render(request, 'main/main.html', data)
 
 
-def callHistory(request):
-    ch = CallHistory.objects.all()
-    return render(request, 'main/callHistory.html', {'callHistory': ch})
+# def callHistory(request):
+#     ch = CallHistory.objects.all()
+#     return render(request, 'main/callHistory.html', {'callHistory': ch})
+#
+#
+# def clientInfo(request):
+#     ci = ClientInfo.objects.all()
+#     return render(request, 'main/clientInfo.html', {'clientInfo': ci})
+#
+#
+# def clientGroup(request):
+#     cg = ClientGroup.objects.all()
+#     return render(request, 'main/clientGroup.html', {'clientGroup': cg})
+#
+#
+# def bank(request):
+#     b = Bank.objects.all()
+#     return render(request, 'main/bank.html', {'bank': b})
+#
+#
+# def bankType(request):
+#     bt = BankType.objects.all()
+#     return render(request, 'main/bankType.html', {'bankType': bt})
 
 
-def clientInfo(request):
-    ci = ClientInfo.objects.all()
-    return render(request, 'main/clientInfo.html', {'clientInfo': ci})
+def table_view(request, idx):
+    table = []
+    names = []
+    if idx == 0:
+        names = ["ФИО", "Дата", "Текст", "id клиента", "id банка"]
+        for m in CallHistory.objects.all():
+            table.append([m.fio, m.date, m.text, m.clientId, m.bankId])
 
+    elif idx == 1:
+        names = ["Адрес", "Возраст", "Номер телефона"]
+        for m in ClientInfo.objects.all():
+            table.append([m.address, m.age, m.phoneNumber])
 
-def clientGroup(request):
-    cg = ClientGroup.objects.all()
-    return render(request, 'main/clientGroup.html', {'clientGroup': cg})
+    elif idx == 2:
+        names = ["Надёжный", "VIP", "Тип клиента"]
+        for m in ClientGroup.objects.all():
+            table.append([m.isRelible, m.isVIP, m.type])
 
+    elif idx == 3:
+        names = ["Название банка", "Адрес", "Тип банка"]
+        for m in Bank.objects.all():
+            table.append([m.bankName, m.address, m.bankType])
 
-def bank(request):
-    b = Bank.objects.all()
-    return render(request, 'main/bank.html', {'bank': b})
+    elif idx == 4:
+        names = ["id банка", "Тип банка"]
+        for m in BankType.objects.all():
+            table.append([m.bankId, m.bankType])
 
-
-def bankType(request):
-    bt = BankType.objects.all()
-    return render(request, 'main/bankType.html', {'bankType': bt})
+    return render(request, 'main/table_show.html', {'table': table, 'names': names})
 

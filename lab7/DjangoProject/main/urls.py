@@ -4,9 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='home'),
     path('main', views.main, name='home'),
-    path('callHistory', views.callHistory, name='callHistory'),
-    path('clientInfo', views.clientInfo, name='clientInfo'),
-    path('clientGroup', views.clientGroup, name='clientGroup'),
-    path('bank', views.bank, name='bank'),
-    path('bankType', views.bankType, name='bankType')
+    path('table_show/<int:idx>', views.table_view, name='table_show')
 ]
