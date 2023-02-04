@@ -17,12 +17,11 @@
         </tr>
             {% for t in table %}
             <tr>
-                {% for v in t %}
+                {% for k, v in t.items %}
                 <td> {{v}} </td>
                 {% endfor %}
-
-                <td><button id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}" alt=""></button></td>
-                <td><button id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}" alt="Кнопка «button»"></button></td>
+                <td><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}" alt=""></a></td>
+                <td><a id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}" alt="Кнопка «button»"></a></td>
             </tr>
             {% endfor %}
 
