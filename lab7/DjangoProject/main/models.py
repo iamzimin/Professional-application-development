@@ -21,7 +21,7 @@ class ClientInfo(models.Model):
     address = models.CharField('Адрес', max_length=150)
     age = models.IntegerField('Возраст', default=0)
     phoneNumber = models.IntegerField('Номер телефона', default=0)
-    clientType = models.IntegerField('Тип клиента', default=0)
+    clientType = models.IntegerField('Тип клиента', default=0)  # TODO удалить
 
     def __str__(self):
         return str(self.phoneNumber)
