@@ -48,18 +48,19 @@ def table_change(request, idx, el, command):
     form = [CallHistoryForm, ClientInfoForm, ClientGroupForm, BankForm, BankTypeForm]
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
 
+    if request.method == 'POST':###################################### ХРЕНЬ
+        forma = form[idx](request.POST)
+        print(forma)
+        if forma.is_valid():
+            forma.save()
+
     if command == 'delete':#################################### РАБОАТЕТ
         model[idx].objects.filter(id=el).delete()
         return redirect('/table_show/' + str(idx))
 
     if command == 'edit':###################################### ХРЕНЬ
-        stringa = model[idx].objects.filter(id=el)
-        if request.method == 'POST':
-            forma = form[idx](request.POST)
-            if forma.is_valid():
-                forma[idx].save()
         return render(request, 'main/table_change.html',
-                      {'form': form[idx], 'names': model[idx].names, 'command': command, 'stringa': stringa})
+                      {'form': form[idx], 'names': model[idx].names, 'command': command})
 
     if command == 'add':###################################### ХРЕНЬ
         if request.method == 'POST':
@@ -69,4 +70,4 @@ def table_change(request, idx, el, command):
         return render(request, 'main/table_change.html',
                       {'form': form[idx], 'names': model[idx].names, 'command': command})
 
-    pass
+    return redirect('/table_show/' + str(idx))
