@@ -51,32 +51,62 @@ def table_change(request, idx, el, command):
     form = forms[idx]
     error = ''
 
-    if command == 'delete':
-        model[idx].objects.filter(id=el).delete()
-        return redirect('/table_show/' + str(idx))
-
-    elif command == 'edit':
-        if request.method == 'POST':
-            form = forms[idx].clone(request.POST)
-            if form.is_valid():
+    if request.method == "POST":
+        form = forms[idx].clone(request.POST)
+        if form.is_valid():
+            if command == 'add':
                 form.save()
-                return redirect('/table_show/' + str(idx))
-            else:
-                error = "Данные введены неправильно"
-                return render(request, 'main/table_change.html',
-                              {'form': form, 'names': model[idx].names, 'error': error})
+            elif command == 'edit':
+                editing_model = model[idx].objects.filter(id=el)[0]
+                for field in form._meta.fields:
+                    setattr(editing_model, field, form.cleaned_data.get(field))
+                editing_model.save()
+            return redirect('table_show', idx)
+        else:
+            error = 'Данные введены неправильно'
+
+    if command == 'edit':
         form = forms[idx].clone_for_edit(model[idx].objects.filter(id=el)[0])
 
-    elif command == 'add':
-        if request.method == 'POST':
-            form = forms[idx].clone(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('/table_show/' + str(idx))
-            else:
-                error = "Данные введены неправильно"
-                return render(request, 'main/table_change.html',
-                              {'form': form, 'names': model[idx].names, 'error': error})
+    if command == 'delete':
+        model[idx].objects.filter(id=el).delete()
+        return redirect('table_show', idx)
 
-    return render(request, 'main/table_change.html',
-                  {'form': form, 'names': model[idx].names, 'error': error})
+    return render(request, "main/table_change.html", {
+        'form': form,
+        'names': model[idx].names,
+        'error': error})
+
+
+    #
+    # if command == 'delete':
+    #     model[idx].objects.filter(id=el).delete()
+    #     return redirect('/table_show/' + str(idx))
+    #
+    # elif command == 'edit':
+    #     if request.method == 'POST':
+    #         editing_model = model[idx].objects.filter(id=el)[0]
+    #         if editing_model.is_valid():
+    #             for field in form._meta.fields:
+    #                 setattr(editing_model, field, form.cleaned_data.get(field))
+    #             editing_model.save()
+    #             return redirect('/table_show/' + str(idx))
+    #         else:
+    #             error = "Данные введены неправильно"
+    #             return render(request, 'main/table_change.html',
+    #                           {'form': form, 'names': model[idx].names, 'error': error})
+    #     form = forms[idx].clone_for_edit(model[idx].objects.filter(id=el)[0])
+    #
+    # elif command == 'add':
+    #     if request.method == 'POST':
+    #         form = forms[idx].clone(request.POST)
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('/table_show/' + str(idx))
+    #         else:
+    #             error = "Данные введены неправильно"
+    #             return render(request, 'main/table_change.html',
+    #                           {'form': form, 'names': model[idx].names, 'error': error})
+    #
+    # return render(request, 'main/table_change.html',
+    #               {'form': form, 'names': model[idx].names, 'error': error})
