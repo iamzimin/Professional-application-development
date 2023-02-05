@@ -59,20 +59,27 @@ main .features h1 {
 }
 
 table {
-    padding-top: 111px;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #ECE9E0;
+    color: #656665;
+    border: 8px solid #ECE9E0;
+    border-radius: 20px;
 }
 
 table th {
-    padding: 5px;
-    border: 1px solid white;
+    font-size: 18px;
+    padding: 10px;
 }
 
 table td {
-    padding: 5px;
-    border: 1px solid white;
+    background: #F5D7BF;
+    padding: 10px;
+    text-align:center
 }
 
 #edit {
@@ -103,4 +110,8 @@ table td {
 #btn3 {
     color: white;
     text-decoration: none;
+}
+
+.form {
+    text-align: center
 }
