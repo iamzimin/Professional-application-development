@@ -1,0 +1,12 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Лаба 7{% endblock %}
+
+{% block content %}
+    <h1>Логин</h1>
+    <form action="{% url 'login' %}" method="post">
+        {{form}}
+    </form>
+
+{% endblock %}

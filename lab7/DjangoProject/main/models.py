@@ -75,3 +75,21 @@ class BankType(models.Model):
     class Meta:
         verbose_name = 'Тип банка'
         verbose_name_plural = 'Типы банков'
+
+
+# class User(models.Model):
+#     login = models.CharField(max_length=150, default="")
+#     password = models.CharField(max_length=150, default="")
+#     role = models.CharField(max_length=150, default="client")
+#
+#     names = ["Индекс", "Логин", "Пароль", "Роль"]
+#     title = "Пользователи"
+#
+#     class Meta:
+#         verbose_name = 'Тип банка'
+#         verbose_name_plural = 'Типы банков'
+#
+#
+#     def __str__(self):
+#         return str(self.login)
+#

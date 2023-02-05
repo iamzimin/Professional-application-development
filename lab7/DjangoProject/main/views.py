@@ -1,6 +1,8 @@
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.defaulttags import url
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import *
 from .forms import *
@@ -72,7 +74,7 @@ def table_change(request, idx, el, command):
         model[idx].objects.filter(id=el).delete()
         return redirect('table_show', idx)
 
-    return render(request, "main/table_change.html", {
+    return render(request, "main/form.html", {
         'form': form,
         'names': model[idx].names,
         'error': error})
@@ -93,7 +95,7 @@ def table_change(request, idx, el, command):
     #             return redirect('/table_show/' + str(idx))
     #         else:
     #             error = "Данные введены неправильно"
-    #             return render(request, 'main/table_change.html',
+    #             return render(request, 'main/form.html',
     #                           {'form': form, 'names': model[idx].names, 'error': error})
     #     form = forms[idx].clone_for_edit(model[idx].objects.filter(id=el)[0])
     #
@@ -105,8 +107,34 @@ def table_change(request, idx, el, command):
     #             return redirect('/table_show/' + str(idx))
     #         else:
     #             error = "Данные введены неправильно"
-    #             return render(request, 'main/table_change.html',
+    #             return render(request, 'main/form.html',
     #                           {'form': form, 'names': model[idx].names, 'error': error})
     #
-    # return render(request, 'main/table_change.html',
+    # return render(request, 'main/form.html',
     #               {'form': form, 'names': model[idx].names, 'error': error})
+
+
+def login(request):
+    form_class = AuthenticationForm
+    return render(request, 'main/form.html',
+                  {'form': form_class, 'names': ['as', 'Логин', 'Пароль', 'sdf'], 'error': ''})
+
+
+def registration(request):
+    form = CreateUserForm
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {
+        'form': form
+    }
+    return render(request, 'main/registration.html', context)
+
+
+def logout(request):
+    return redirect('')
+
+
+
+

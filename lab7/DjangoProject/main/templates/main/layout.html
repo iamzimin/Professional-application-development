@@ -24,9 +24,20 @@
             <a href="{% url 'table_show' 3 %}"> <li><i class="bi bi-piggy-bank"></i> Банк</li> </a>
             <a href="{% url 'table_show' 4 %}"> <li><i class="bi bi-bank2"></i> Тип банка</li> </a>
         </ul>
+        <div>User: {{user}}</div>
     </aside>
+    <main style="height: 100%">
+        {% if user.is_authenticated %}
+        <div class="reg_log">
+            <a href="{% url 'logout' %}">Выйти</a>
+        </div>
+        {% else %}
+        <div class="reg_log">
+            <a href="{% url 'registration' %}">Зарегистрироваться</a>
+            <a href="{% url 'login' %}">Войти</a>
+        </div>
+        {% endif %}
 
-    <main>
         {% block content %}
         {% endblock %}
     </main>

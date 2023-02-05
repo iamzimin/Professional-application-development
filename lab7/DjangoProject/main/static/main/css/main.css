@@ -115,3 +115,8 @@ table td {
 .form {
     text-align: center
 }
+
+.reg_log {
+    position: absolute;
+    right: 0px;
+}
