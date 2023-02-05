@@ -8,12 +8,28 @@ class CallHistoryForm(ModelForm):
         # fields = ["ФИО", "Дата", "Текст", "id клиента", "id банка"]
         fields = ["fio", "date", "text", "clientId", "bankId"]
 
+    @staticmethod
+    def clone(request):
+        return CallHistoryForm(request)
+
+    @staticmethod
+    def clone_for_edit(istans):
+        return CallHistoryForm(instance=istans)
+
 
 class ClientInfoForm(ModelForm):
     class Meta:
         model = ClientInfo
         # fields = ["Адрес", "Возраст", "Номер телефона"]
         fields = ["address", "age", "phoneNumber"]
+
+    @staticmethod
+    def clone(request):
+        return ClientInfoForm(request)
+
+    @staticmethod
+    def clone_for_edit(istans):
+        return ClientInfoForm(instance=istans)
 
 
 class ClientGroupForm(ModelForm):
@@ -22,6 +38,14 @@ class ClientGroupForm(ModelForm):
         # fields = ["Надёжный", "VIP", "Тип клиента"]
         fields = ["isRelible", "isVIP", "type"]
 
+    @staticmethod
+    def clone(request):
+        return ClientGroupForm(request)
+
+    @staticmethod
+    def clone_for_edit(istans):
+        return ClientGroupForm(instance=istans)
+
 
 class BankForm(ModelForm):
     class Meta:
@@ -29,9 +53,25 @@ class BankForm(ModelForm):
         # fields = ["Название банка", "Адрес", "Тип банка"]
         fields = ["bankName", "address", "bankType"]
 
+    @staticmethod
+    def clone(request):
+        return BankForm(request)
+
+    @staticmethod
+    def clone_for_edit(istans):
+        return BankForm(instance=istans)
+
 
 class BankTypeForm(ModelForm):
     class Meta:
         model = BankType
         # fields = ["Тип банка"]
         fields = ["bankType"]
+
+    @staticmethod
+    def clone(request):
+        return BankTypeForm(request)
+
+    @staticmethod
+    def clone_for_edit(istans):
+        return BankTypeForm(instance=istans)

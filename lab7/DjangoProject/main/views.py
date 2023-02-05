@@ -45,9 +45,10 @@ def table_view(request, idx):
 
 
 def table_change(request, idx, el, command):
-    form = [CallHistoryForm, ClientInfoForm, ClientGroupForm, BankForm, BankTypeForm]
+    forms = [CallHistoryForm, ClientInfoForm, ClientGroupForm, BankForm, BankTypeForm]
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
-
+    form = forms[idx]
+    error = ''
     # if request.method == 'POST':###################################### ХРЕНЬ
     #     forma = form[idx](request.POST)
     #     print(forma)
@@ -55,20 +56,37 @@ def table_change(request, idx, el, command):
     #     if forma.is_valid():
     #         forma.save()
 
-    if command == 'delete':#################################### РАБОАТЕТ
+    if command == 'delete':
         model[idx].objects.filter(id=el).delete()
         return redirect('/table_show/' + str(idx))
 
-    if command == 'edit':###################################### ХРЕНЬ
-        return render(request, 'main/table_change.html',
-                      {'form': form[idx], 'names': model[idx].names, 'command': command})
-
-    if command == 'add':###################################### ХРЕНЬ
+    elif command == 'edit':
         if request.method == 'POST':
-            forma = form[idx](request.POST)
-            if forma.is_valid():
-                forma[idx].save()
-        return render(request, 'main/table_change.html',
-                      {'form': form[idx], 'names': model[idx].names, 'command': command})
+            form = forms[idx].clone(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/table_show/' + str(idx))
+            else:
+                error = "Данные введены неправильно"
+                return render(request, 'main/table_change.html',
+                              {'form': forms[idx], 'names': model[idx].names, 'error': error})
+        form = forms[idx].clone_for_edit(model[idx].objects.filter(id=el)[0])
 
-    # return redirect('/table_show/' + str(idx))
+    elif command == 'add':
+        if request.method == 'POST':
+            form = forms[idx].clone(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/table_show/' + str(idx))
+            else:
+                error = "Данные введены неправильно"
+                return render(request, 'main/table_change.html',
+                              {'form': forms[idx], 'names': model[idx].names, 'error': error})
+
+
+
+
+
+
+    return render(request, 'main/table_change.html',
+                  {'form': form, 'names': model[idx].names, 'error': error})

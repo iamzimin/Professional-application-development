@@ -3,7 +3,7 @@
 {% block content %}
 
 
-        <form action="POST">
+        <form method="POST">
             {% csrf_token %}
             {% for d in form %}
 
@@ -19,11 +19,10 @@
                 {{d}}
 
             {% endfor %}
+            <div>{{error}}</div>
             <div style="margin-top: 15px">
                 <button class="btn-submit" type="submit"> Подтвердить</button>
             </div>
         </form>
-
-
 
 {% endblock %}

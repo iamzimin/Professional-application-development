@@ -69,7 +69,6 @@ class Bank(models.Model):
 
 class BankType(models.Model):
     id = models.AutoField(primary_key=True)
-    # bankId = models.IntegerField('id банка', default=0)
     bankType = models.CharField('Тип банка', max_length=100)
 
     names = ["id", "Тип банка"]
