@@ -19,12 +19,13 @@ class CallHistory(models.Model):
 
 
 class ClientInfo(models.Model):
-    id = models.OneToOneField('ClientGroup', primary_key=True, serialize=False, on_delete=models.CASCADE)
+    # id = models.OneToOneField('ClientGroup', primary_key=True, serialize=False, on_delete=models.CASCADE)
     address = models.CharField('Адрес', max_length=150)
     age = models.IntegerField('Возраст', default=0)
     phoneNumber = models.IntegerField('Номер телефона', default=0)
+    clientId = models.OneToOneField('ClientGroup', on_delete=models.CASCADE)
 
-    names = ["id", "Адрес", "Возраст", "Номер телефона"]
+    names = ["id", "Адрес", "Возраст", "Номер телефона", "id клиента"]
 
     def __str__(self):
         return str(self.id)

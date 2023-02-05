@@ -21,7 +21,7 @@ class ClientInfoForm(ModelForm):
     class Meta:
         model = ClientInfo
         # fields = ["Адрес", "Возраст", "Номер телефона"]
-        fields = ["address", "age", "phoneNumber"]
+        fields = ["address", "age", "phoneNumber", "clientId"]
 
     @staticmethod
     def clone(request):

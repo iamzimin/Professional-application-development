@@ -27,7 +27,7 @@ def table_view(request, idx):
 
     elif idx == 1:
         for m in ClientInfo.objects.all():
-            table.append({"id": m.id, 0: m.address, 1: m.age, 2: m.phoneNumber})
+            table.append({"id": m.id, 0: m.address, 1: m.age, 2: m.phoneNumber, 3: m.clientId})
 
     elif idx == 2:
         for m in ClientGroup.objects.all():
@@ -72,7 +72,7 @@ def table_change(request, idx, el, command):
             #if idx == 1:
                 #formNew = forms[2].clone({"isRelible": False, "isVIP": False, "type": "none"})
                 #formNew.save()
-                #form = forms[idx].clone({"idx": 3, "address": request.POST.get("address"), "age": request.POST.get("age"), "phoneNumber": request.POST.get("phoneNumber")})
+                #form = forms[idx].clone({"address": request.POST.get("address"), "age": request.POST.get("age"), "phoneNumber": request.POST.get("phoneNumber"), "clientId": 1})
             if form.is_valid():
                 form.save()
                 return redirect('/table_show/' + str(idx))
