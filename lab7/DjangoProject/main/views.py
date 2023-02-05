@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.template.defaulttags import url
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 from .models import *
 from .forms import *
@@ -116,9 +117,17 @@ def table_change(request, idx, el, command):
 
 
 def login(request):
-    form = CreateUserForm
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('main')
+
     context = {
-        'form': form
+
     }
     return render(request, 'registration/login.html', context)
 
@@ -135,11 +144,6 @@ def registration(request):
         'form': form
     }
     return render(request, 'registration/registration.html', context)
-
-
-def logout(request):
-    return redirect('')
-
 
 
 
