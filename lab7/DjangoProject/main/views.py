@@ -115,9 +115,11 @@ def table_change(request, idx, el, command):
 
 
 def login(request):
-    form_class = AuthenticationForm
-    return render(request, 'main/form.html',
-                  {'form': form_class, 'names': ['as', 'Логин', 'Пароль', 'sdf'], 'error': ''})
+    form = CreateUserForm
+    context = {
+        'form': form
+    }
+    return render(request, 'main/login.html', context)
 
 
 def registration(request):
