@@ -20,6 +20,7 @@ def main(request):
 def table_view(request, idx):
     table = []
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
+    table_name = ["История обращений", "Информация о клиенте", "Группы клиентов", "Банк", "Тип банка"]
 
     if idx == 0:
         for m in CallHistory.objects.all():
@@ -41,7 +42,7 @@ def table_view(request, idx):
         for m in BankType.objects.all():
             table.append({"id": m.id, 0: m.bankType})
 
-    return render(request, 'main/table_show.html', {'table_id': idx, 'table': table, 'names': model[idx].names})
+    return render(request, 'main/table_show.html', {'table_id': idx, 'table': table, 'names': model[idx].names, 'table_name': table_name[idx]})
 
 
 def table_change(request, idx, el, command):
