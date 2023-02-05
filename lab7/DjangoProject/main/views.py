@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.defaulttags import url
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 from .models import *
 from .forms import *
@@ -119,7 +120,7 @@ def login(request):
     context = {
         'form': form
     }
-    return render(request, 'main/login.html', context)
+    return render(request, 'registration/login.html', context)
 
 
 def registration(request):
@@ -128,10 +129,12 @@ def registration(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Аккаунт зарегестрирован")
+            return redirect('login')
     context = {
         'form': form
     }
-    return render(request, 'main/registration.html', context)
+    return render(request, 'registration/registration.html', context)
 
 
 def logout(request):
