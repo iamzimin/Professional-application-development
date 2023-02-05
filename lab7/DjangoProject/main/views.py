@@ -49,12 +49,6 @@ def table_change(request, idx, el, command):
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
     form = forms[idx]
     error = ''
-    # if request.method == 'POST':###################################### ХРЕНЬ
-    #     forma = form[idx](request.POST)
-    #     print(forma)
-    #     print("123")
-    #     if forma.is_valid():
-    #         forma.save()
 
     if command == 'delete':
         model[idx].objects.filter(id=el).delete()
@@ -69,7 +63,7 @@ def table_change(request, idx, el, command):
             else:
                 error = "Данные введены неправильно"
                 return render(request, 'main/table_change.html',
-                              {'form': forms[idx], 'names': model[idx].names, 'error': error})
+                              {'form': form, 'names': model[idx].names, 'error': error})
         form = forms[idx].clone_for_edit(model[idx].objects.filter(id=el)[0])
 
     elif command == 'add':
@@ -81,12 +75,7 @@ def table_change(request, idx, el, command):
             else:
                 error = "Данные введены неправильно"
                 return render(request, 'main/table_change.html',
-                              {'form': forms[idx], 'names': model[idx].names, 'error': error})
-
-
-
-
-
+                              {'form': form, 'names': model[idx].names, 'error': error})
 
     return render(request, 'main/table_change.html',
                   {'form': form, 'names': model[idx].names, 'error': error})
