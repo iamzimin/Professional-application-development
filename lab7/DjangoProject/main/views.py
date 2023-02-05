@@ -69,6 +69,10 @@ def table_change(request, idx, el, command):
     elif command == 'add':
         if request.method == 'POST':
             form = forms[idx].clone(request.POST)
+            #if idx == 1:
+                #formNew = forms[2].clone({"isRelible": False, "isVIP": False, "type": "none"})
+                #formNew.save()
+                #form = forms[idx].clone({"idx": 3, "address": request.POST.get("address"), "age": request.POST.get("age"), "phoneNumber": request.POST.get("phoneNumber")})
             if form.is_valid():
                 form.save()
                 return redirect('/table_show/' + str(idx))
