@@ -19,7 +19,6 @@ class CallHistory(models.Model):
 
 
 class ClientInfo(models.Model):
-    # id = models.OneToOneField('ClientGroup', primary_key=True, serialize=False, on_delete=models.CASCADE)
     address = models.CharField('Адрес', max_length=150)
     age = models.IntegerField('Возраст', default=0)
     phoneNumber = models.IntegerField('Номер телефона', default=0)
