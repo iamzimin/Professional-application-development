@@ -1,7 +1,8 @@
 from datetime import datetime
 import os, os.path
 
-class Row():
+
+class Row:
     idx = 0
 
     def __init__(self, idx: int):
@@ -12,7 +13,6 @@ class Row():
 
     def set_idx(self, val):
         self.idx = val
-
 
 
 class RowModel(Row):
@@ -33,7 +33,8 @@ class RowModel(Row):
     def __setattr__(self, __name, __value):
         self.__dict__[__name] = __value
 
-class Data() :
+
+class Data:
     file_path = ""
     data = []
     pointer = 0

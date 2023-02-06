@@ -13,9 +13,10 @@ def parseToHtmlTable(strings):
     for x in strings:
         stringi += "<tr>"
         for y in x:
-            stringi += "<td>"
+            stringi += "<th style='color: white; border-collapse: separate; border-radius: 10px; " \
+                       "background: #274524; padding: 10px; text-align:center; font-size: 30px'> "
             stringi += str(y)
-            stringi += "</td>"
+            stringi += "</th>"
         stringi += "</tr>"
     return stringi
 
@@ -84,14 +85,24 @@ class Page(object):
         <html>
             <head>
                 <meta charset="utf-8">
-                <title>Lab6</title>
+                <title>Лаба 6 😎️</title>
             </head>
-                <body>
-                    <table border="1">
-                        <caption>Lab6</caption>
+                <body style="background: black">
+                    <table  style="
+                                margin-left: auto;
+                                margin-right: auto;
+                                text-align: left;
+                                border-collapse: separate;
+                                border-radius: 15px;
+                                border-spacing: 5px;
+                                background: #1e291d;
+                                color: #c7c7c7;
+                                border: 2px solid #429641;"
+                    >
+                        <h1 style="color: white; text-align: center; font-size: 50px;">Лаба 6 😎️</h1>
                             <tr>
                                 {
-                                    "".join(["<th>" + i + "</th>"
+                                    "".join(["<th style='color: white; text-align:center; padding: 10px; font-size: 30px;'>" + i + "</th>"
                                             for i in self.columns])
                                 }
                             </tr>   
@@ -107,7 +118,7 @@ if __name__ == '__main__':
     db.create_tables([APPLab])
     app = APPLab()
     # app.Add("C", datetime.datetime(2023, 4, 4, 18, 50), "Hello3")
-    app.Update(3, "Test", datetime.datetime(2025, 5, 5, 18, 50), "H")
+    app.Update(3, "Test", datetime.datetime(2025, 5, 5, 18, 50), "HeHeHe")
 
     columns = app.getColumn()
     strings = app.getStrings()

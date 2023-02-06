@@ -1,6 +1,7 @@
 from datetime import datetime
 import os, os.path
 
+
 def parse_csv():
     data = {}
 
@@ -10,26 +11,32 @@ def parse_csv():
             data.update({int(idx): {"FIO": fio, "DATE": datetime.strptime(time, "%Y-%m-%d %H:%M:%S"), "TEXT": text}})
     return data
 
+
 def FIO_sort(d):
     return dict(sorted(d.items(), key=lambda f: f[1]["FIO"]))
+
 
 def DATE_sort(d):
     return dict(sorted(d.items(), key=lambda f: f[1]["DATE"]))
 
+
 def select_len(d, value):
     return dict((k, v) for k, v in d.items() if len(v["TEXT"]) > value)
+
 
 def output(vec):
     for k, v in vec.items():
         print(f"№{k}\nФИО: {v['FIO']}\nДата: {v['DATE']}\nТекст: {v['TEXT']}\n")
     print('\n\n\n')
 
+
 def add_new_data(d, fio, date, text):
     with open("table.csv", "w", encoding='utf-8') as f:
         for k, v in d.items():
             f.write(f"{k},{v['FIO']},{v['DATE']},{v['TEXT']}\n")
-        f.write(f"{len(d)+1},{fio},{date},{text}\n")
-    data.update({len(d)+1: {"FIO": fio, "DATE": date, "TEXT": text}})
+        f.write(f"{len(d) + 1},{fio},{date},{text}\n")
+    data.update({len(d) + 1: {"FIO": fio, "DATE": date, "TEXT": text}})
+
 
 def directory_count(path):
     (loc, dirs, files) = next(os.walk(path))

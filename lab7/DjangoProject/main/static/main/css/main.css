@@ -85,7 +85,7 @@ table {
 table th {
     font-size: 18px;
     padding: 10px;
-    text-align:center
+    text-align:center;
 }
 
 table td {
@@ -93,7 +93,7 @@ table td {
     border-radius: 10px;
     background: #274524;
     padding: 10px;
-    text-align:center
+    text-align:center;
 }
 
 #edit {
