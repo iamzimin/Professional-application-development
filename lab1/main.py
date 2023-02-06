@@ -1,5 +1,6 @@
 import random
 
+
 def tryExept(x):
     try:
         x = int(input())
@@ -7,6 +8,7 @@ def tryExept(x):
     except ValueError:
         print("Введены неверные данные")
         exit()
+
 
 def withLib(A, B, DeleteList):
     point = -1
@@ -42,11 +44,13 @@ def withLib(A, B, DeleteList):
 
             point = -1
 
+
 def sze(list):
     counter = 0
     for item in list:
         counter += 1
     return counter
+
 
 def withoutLib(A, B, DeleteList):
     point = -1
@@ -105,6 +109,7 @@ if __name__ == '__main__':
         print(*A)
         print(*B)
 
+    # методы для выполнения кода с использованием библиотек и без
     if lib == 0:
         withLib(A, B, DeleteList)
     else:

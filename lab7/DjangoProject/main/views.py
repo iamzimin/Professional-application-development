@@ -11,7 +11,7 @@ from .forms import *
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'main/index.html', {'role': get_role(request.user)})
 
 
 def main(request):
@@ -22,6 +22,12 @@ def main(request):
 
 
 def table_view(request, idx):
+    role = get_role(request.user)
+    locked_tables = [0, 1]
+
+    if idx in locked_tables and not role == "Client":
+        return redirect('/main')
+
     table = []
     model = [CallHistory, ClientInfo, ClientGroup, Bank, BankType]
     table_name = ["История обращений", "Информация о клиенте", "Группы клиентов", "Банк", "Тип банка"]
@@ -46,7 +52,12 @@ def table_view(request, idx):
         for m in BankType.objects.all():
             table.append({"id": m.id, 0: m.bankType})
 
-    return render(request, 'main/table_show.html', {'table_id': idx, 'table': table, 'names': model[idx].names, 'table_name': table_name[idx]})
+    return render(request, 'main/table_show.html',
+                  {'table_id': idx,
+                   'table': table,
+                   'names': model[idx].names,
+                   'table_name': table_name[idx],
+                   'role': role})
 
 
 def table_change(request, idx, el, command):
@@ -80,7 +91,6 @@ def table_change(request, idx, el, command):
         'form': form,
         'names': model[idx].names,
         'error': error})
-
 
     #
     # if command == 'delete':
@@ -146,9 +156,22 @@ def registration(request):
             form = CreateUserForm(request.POST)
             if form.is_valid():
                 form.save()
+                Group.objects.get(name="Client").user_set.add(User.objects.last())
                 messages.success(request, "Аккаунт зарегестрирован")
                 return redirect('login')
         context = {
             'form': form
         }
         return render(request, 'registration/registration.html', context)
+
+
+def get_role(user):
+    template = ""
+    if user.is_authenticated:
+        if user.is_superuser:
+            template = "Admin"
+        elif user.groups.filter(name='Client').exists():
+            template = "Client"
+        elif user.groups.filter(name='Director').exists():
+            template = "Director"
+    return template
