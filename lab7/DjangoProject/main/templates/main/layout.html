@@ -30,17 +30,22 @@
             <a href="{% url 'table_show' 3 %}"> <li><i class="bi bi-piggy-bank"></i> Банк</li> </a>
             <a href="{% url 'table_show' 4 %}"> <li><i class="bi bi-bank2"></i> Тип банка</li> </a>
         </ul>
-        <div>User: {{user}}</div>
+        <div id="user">Пользователь: {{user}}<br>
+            {% if user.is_authenticated %}
+                Роль: {{role}}
+            {% endif %}
+        </div>
+
     </aside>
     <main style="height: 100%">
         {% if user.is_authenticated %}
         <div class="reg_log">
-            <a href="{% url 'logout' %}">Выйти</a>
+            <button id="exitBtn"><a href="{% url 'logout' %}">Выйти</a></button>
         </div>
         {% else %}
         <div class="reg_log">
-            <a href="{% url 'registration' %}">Зарегистрироваться</a>
-            <a href="{% url 'login' %}">Войти</a>
+            <button id="regBtn"><a href="{% url 'registration' %}">Зарегистрироваться</a></button>
+            <button id="logBtn"><a href="{% url 'login' %}">Войти</a></button>
         </div>
         {% endif %}
 
