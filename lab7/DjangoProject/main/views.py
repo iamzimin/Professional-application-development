@@ -117,33 +117,38 @@ def table_change(request, idx, el, command):
 
 
 def login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+    if request.user.is_authenticated:
+        return redirect('/main')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('main')
+            if user is not None:
+                login(request, user)
+                return redirect('main')
+            else:
+                messages.info(request, 'Неверное имя пользователя или пароль')
 
-    context = {
+        context = {
 
-    }
-    return render(request, 'registration/login.html', context)
+        }
+        return render(request, 'registration/login.html', context)
 
 
 def registration(request):
-    form = CreateUserForm
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Аккаунт зарегестрирован")
-            return redirect('login')
-    context = {
-        'form': form
-    }
-    return render(request, 'registration/registration.html', context)
-
-
-
+    if request.user.is_authenticated:
+        return redirect('/main')
+    else:
+        form = CreateUserForm
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Аккаунт зарегестрирован")
+                return redirect('login')
+        context = {
+            'form': form
+        }
+        return render(request, 'registration/registration.html', context)
