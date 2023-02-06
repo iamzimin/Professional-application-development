@@ -227,22 +227,9 @@ table td {
 	bottom:10px;
 }
 
-
-
-
-
-
-.input-group-append{
-    color: white;
-}
-
-.user_card {
+.edit_form {
     width: 350px;
     background: #1e291d;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     padding: 10px;
     border-radius: 15px;
     position:absolute;

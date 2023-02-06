@@ -32,7 +32,7 @@
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			border-radius: 5px;
+			border-radius: 15px;
 		}
 
 		.form_container {
@@ -121,7 +121,7 @@
 				   		</div>
 					</form>
 				</div>
-				{{form.errors}}
+				<div style="color: white">{{form.errors}}</div>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						<p style="color: white">Уже есть аккаунт?</p> <a style="text-decoration: none; color: #549e00" href="{% url 'login' %}" class="ml-2">Войти</a>
