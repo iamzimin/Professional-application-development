@@ -14,7 +14,7 @@ def parseToHtmlTable(strings):
         stringi += "<tr>"
         for y in x:
             stringi += "<th style='color: white; border-collapse: separate; border-radius: 10px; " \
-                       "background: #274524; padding: 10px; text-align:center; font-size: 30px'> "
+                       "background: #6b1c1c; padding: 10px; text-align:center; font-size: 30px'> "
             stringi += str(y)
             stringi += "</th>"
         stringi += "</tr>"
@@ -95,9 +95,9 @@ class Page(object):
                                 border-collapse: separate;
                                 border-radius: 15px;
                                 border-spacing: 5px;
-                                background: #1e291d;
+                                background: #3d1414;
                                 color: #c7c7c7;
-                                border: 2px solid #429641;"
+                                border: 2px solid #c73c3c;"
                     >
                         <h1 style="color: white; text-align: center; font-size: 50px;">Лаба 6 😎️</h1>
                             <tr>
