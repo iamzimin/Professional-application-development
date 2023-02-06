@@ -10,12 +10,12 @@
     <table border="1">
         <tr>
             {% for name in names %}
-            <td>{{ name }}</td>
+            <th>{{ name }}</th>
             {% endfor %}
             {% if user.is_authenticated %}
                 {% if role == "Admin" or role == "Director" %}
-            <td>Изменить</td>
-            <td>Удалить</td>
+            <th>Изменить</th>
+            <th>Удалить</th>
                 {% endif %}
             {% endif %}
         </tr>
@@ -26,8 +26,8 @@
                 {% endfor %}
                 {% if user.is_authenticated %}
                     {% if role == "Admin" or role == "Director" %}
-                <td><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}"></a></td>
-                <td><a href="{% url 'table_change' idx=table_id el=t.id command='delete' %}" id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}"></a></td>
+                <td><center><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}"></a></center></td>
+                <td><center><a href="{% url 'table_change' idx=table_id el=t.id command='delete' %}" id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}"></a></center></td>
                     {% endif %}
                 {% endif %}
             </tr>
