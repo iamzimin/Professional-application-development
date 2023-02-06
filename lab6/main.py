@@ -117,8 +117,8 @@ class Page(object):
 if __name__ == '__main__':
     db.create_tables([APPLab])
     app = APPLab()
-    # app.Add("C", datetime.datetime(2023, 4, 4, 18, 50), "Hello3")
-    app.Update(3, "Test", datetime.datetime(2025, 5, 5, 18, 50), "HeHeHe")
+    # app.Add("Just For Testing", datetime.datetime(2022, 5, 1, 16, 25), "Message")
+    # app.Update(4, "Test", datetime.datetime(2025, 5, 5, 18, 50), "HeHeHe")
 
     columns = app.getColumn()
     strings = app.getStrings()
