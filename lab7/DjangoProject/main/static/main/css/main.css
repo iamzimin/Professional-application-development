@@ -225,3 +225,32 @@ table td {
     position:absolute;
 	bottom:10px;
 }
+
+
+
+
+
+
+
+
+
+.input-group-append{
+    color: white;
+}
+
+.user_card {
+    width: 350px;
+    background: #1e291d;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+    position:absolute;
+    left:750px;
+	bottom:250px;
+}
+
+
+
