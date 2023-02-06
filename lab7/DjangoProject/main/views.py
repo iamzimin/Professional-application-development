@@ -16,7 +16,8 @@ def index(request):
 
 def main(request):
     data = {
-        'title': 'Что это такое?'
+        'title': 'Что это такое?',
+        'role': get_role(request.user)
     }
     return render(request, 'main/main.html', data)
 
@@ -25,7 +26,7 @@ def table_view(request, idx):
     role = get_role(request.user)
     locked_tables = [0, 1]
 
-    if idx in locked_tables and not role == "Client":
+    if idx in locked_tables and (role == "Client" or role == ""):
         return redirect('/main')
 
     table = []
@@ -66,6 +67,13 @@ def table_change(request, idx, el, command):
     form = forms[idx]
     error = ''
 
+    role = get_role(request.user)
+
+    locked_tables = [0, 1]
+
+    if idx in locked_tables and (role == "Client" or role == ""):
+        return redirect('/main')
+
     if request.method == "POST":
         form = forms[idx].clone(request.POST)
         if form.is_valid():
@@ -90,7 +98,8 @@ def table_change(request, idx, el, command):
     return render(request, "main/form.html", {
         'form': form,
         'names': model[idx].names,
-        'error': error})
+        'error': error,
+        'role': get_role(request.user)})
 
     #
     # if command == 'delete':

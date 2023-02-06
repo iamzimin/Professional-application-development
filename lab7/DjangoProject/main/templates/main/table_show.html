@@ -12,9 +12,11 @@
             {% for name in names %}
             <td>{{ name }}</td>
             {% endfor %}
-            {% if user.is_authenticated and role == 'Client' %}
+            {% if user.is_authenticated %}
+                {% if role == "Admin" or role == "Director" %}
             <td>Изменить</td>
             <td>Удалить</td>
+                {% endif %}
             {% endif %}
         </tr>
             {% for t in table %}
@@ -22,18 +24,21 @@
                 {% for k, v in t.items %}
                 <td> {{v}} </td>
                 {% endfor %}
-
-                {% if user.is_authenticated and role == 'Client' %}
+                {% if user.is_authenticated %}
+                    {% if role == "Admin" or role == "Director" %}
                 <td><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}"></a></td>
                 <td><a href="{% url 'table_change' idx=table_id el=t.id command='delete' %}" id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}"></a></td>
+                    {% endif %}
                 {% endif %}
             </tr>
             {% endfor %}
 
     </table>
-    {% if user.is_authenticated and role == 'Client' %}
+        {% if user.is_authenticated %}
+            {% if role == "Admin" or role == "Director" %}
         <div class="center">
             <button><a href="{% url 'table_change' idx=table_id el=0 command='add' %}" id="btn3" >Добавить запись</a></button>
         </div>
-    {% endif %}
+        {% endif %}
+            {% endif %}
 {% endblock %}

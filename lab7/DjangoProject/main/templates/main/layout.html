@@ -19,9 +19,11 @@
         <ul>
             <a href="{% url 'home' %}"> <li><i class="bi bi-house"></i> Главная</li> </a>
 
-            {% if user.is_authenticated and role == 'Client' %}
+            {% if user.is_authenticated %}
+                {% if role == "Admin" or role == "Director" %}
                 <a href="{% url 'table_show' 0 %}"> <li><i class="bi bi-list-ul"></i> История обращений</li> </a>
                 <a href="{% url 'table_show' 1 %}"> <li><i class="bi bi-info-circle"></i> Информация о клиенте</li> </a>
+                {% endif %}
             {% endif %}
 
             <a href="{% url 'table_show' 2 %}"> <li><i class="bi bi-collection"></i> Группы клиентов</li> </a>
