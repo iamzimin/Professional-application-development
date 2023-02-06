@@ -26,6 +26,7 @@ aside img {
 }
 
 aside h3 {
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     font-size: 30px;
@@ -49,7 +50,7 @@ aside ul li, aside ul a {
 
 aside ul li:hover, aside ul a:hover {
     transform: scale(1.05);
-    color: #F57268
+    color: lime;
 }
 
 main .features h1 {
@@ -231,9 +232,6 @@ table td {
 
 
 
-
-
-
 .input-group-append{
     color: white;
 }
@@ -249,7 +247,7 @@ table td {
     border-radius: 15px;
     position:absolute;
     left:750px;
-	bottom:250px;
+	bottom:280px;
 }
 
 
