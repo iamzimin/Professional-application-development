@@ -35,13 +35,13 @@ CORS_ORIGIN_WHITELIST = ['http://localhost:8000']
 # Application definition
 
 INSTALLED_APPS = [
+    'main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'lab9'
 ]
 
 MIDDLEWARE = [
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = "/usr/src/app/lab9/lab9/static"
+STATIC_ROOT = "/usr/src/app/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
