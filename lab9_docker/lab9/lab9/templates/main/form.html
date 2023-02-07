@@ -1,0 +1,35 @@
+{% extends 'main/main.html' %}
+
+{% block content %}
+
+    <div class="center_table">
+        <div class="edit_form">
+
+                <div class="form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for d in form %}
+
+                            {% if forloop.counter == 1 %} <div style="color: white">{{names.1}}</div> {% endif %}
+                            {% if forloop.counter == 2 %} <div style="color: white">{{names.2}}</div> {% endif %}
+                            {% if forloop.counter == 3 %} <div style="color: white">{{names.3}}</div> {% endif %}
+                            {% if forloop.counter == 4 %} <div style="color: white">{{names.4}}</div> {% endif %}
+                            {% if forloop.counter == 5 %} <div style="color: white">{{names.5}}</div> {% endif %}
+                            {% if forloop.counter == 6 %} <div style="color: white">{{names.6}}</div> {% endif %}
+                            {% if forloop.counter == 7 %} <div style="color: white">{{names.7}}</div> {% endif %}
+                            {% if forloop.counter == 8 %} <div style="color: white">{{names.8}}</div> {% endif %}
+                            {% if forloop.counter == 9 %} <div style="color: white">{{names.9}}</div> {% endif %}
+                            {{d}}
+
+                        {% endfor %}
+                        <div style="color: white">{{error}}</div>
+                        <div style="margin-top: 15px">
+                            <button id="logBtn" type="submit"> Подтвердить</button>
+                        </div>
+                    </form>
+                </div>
+
+        </div>
+    </div>
+
+{% endblock %}
