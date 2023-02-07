@@ -17,7 +17,7 @@ services:
             - DJANGO_SETTINGS_MODULE
         volumes:
             - '.:/usr/src/app'
-            - 'static:/usr/src/app/lab9/lab9/static'
+            - 'static:/usr/src/app/static/'
         networks:
             - db_network
             - nginx_network
@@ -32,7 +32,7 @@ services:
             - '8000:80'
         volumes:
             - './config/nginx/conf.d:/etc/nginx/conf.d'
-            - 'static:/usr/src/app/lab9/lab9/static'
+            - 'static:/usr/src/app/static'
         networks:
             - nginx_network
         depends_on:
