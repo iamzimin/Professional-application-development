@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Лаба 7{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{table_name}}</h1>
+    </div>
+    <table border="1">
+        <tr>
+            {% for name in names %}
+            <th>{{ name }}</th>
+            {% endfor %}
+            {% if user.is_authenticated %}
+                {% if role == "Admin" or role == "Director" %}
+            <th>Изменить</th>
+            <th>Удалить</th>
+                {% endif %}
+            {% endif %}
+        </tr>
+            {% for t in table %}
+            <tr>
+                {% for k, v in t.items %}
+                <td> {{v}} </td>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                    {% if role == "Admin" or role == "Director" %}
+                <td><center><a href="{% url 'table_change' idx=table_id el=t.id command='edit' %}" id="btn1"><img id="edit" src="{% static 'main/img/edit.png' %}"></a></center></td>
+                <td><center><a href="{% url 'table_change' idx=table_id el=t.id command='delete' %}" id="btn2"><img id="delete" src="{% static 'main/img/delete.png' %}"></a></center></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+    </table>
+        {% if user.is_authenticated %}
+            {% if role == "Admin" or role == "Director" %}
+        <div class="center">
+            <button id="btn3"><a href="{% url 'table_change' idx=table_id el=0 command='add' %}" >Добавить запись</a></button>
+        </div>
+        {% endif %}
+            {% endif %}
+{% endblock %}
