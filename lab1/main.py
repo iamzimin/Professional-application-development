@@ -53,12 +53,12 @@ def sze(list):
 
 
 def withoutLib(A, B, DeleteList):
-    point = -1
+    start = -1
 
     for x in range(sze(A)):
-        if point == -1:
+        if start == -1:
             if A[x] % 2 == 1:
-                point = x
+                start = x
         if A[x] % 2 == 0 or x + 1 >= sze(A):
 
             if x + 1 >= sze(A):
@@ -67,15 +67,15 @@ def withoutLib(A, B, DeleteList):
                 end = x - 1
 
             isExist = False
-            for y in range(point, end + 1):
+            for y in range(start, end + 1):
                 if A[y] in B:
                     isExist = True
 
             if not isExist:
-                for z in range(point, end + 1):
+                for z in range(start, end + 1):
                     DeleteList.append(z)
 
-            point = -1
+            start = -1
 
 
 if __name__ == '__main__':

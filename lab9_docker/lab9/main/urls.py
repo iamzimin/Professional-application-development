@@ -8,5 +8,5 @@ urlpatterns = [
     path('table_change/<int:idx>/<int:el>/<command>', views.table_change, name='table_change'),
     path('login', views.login, name='login'),
     path('registration', views.registration, name='registration'),
-    path('logout', include('django.contrib.auth.urls'), name='logout')
+    path('logout', include('django.contrib.auth.urls'), name='logout', kwargs={'next_page': ''})
 ]
