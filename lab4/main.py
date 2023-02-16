@@ -103,8 +103,8 @@ class Data:
         parsed = []
         with open(path, "r", encoding='utf-8') as raw_csv:
             for line in raw_csv:
-                (idx, nick, text, likes) = line.replace("\n", "").split(",")
-                parsed.append(RowModel(int(idx), nick, text, likes))
+                (idx, fio, date, text) = line.replace("\n", "").split(",")
+                parsed.append(RowModel(int(idx), fio, date, text))
         return parsed
 
     @staticmethod
@@ -142,4 +142,4 @@ if __name__ == '__main__':
     print(f"\n{data[idx]}")
 
     # добавление строки
-    data.add_new("T E S T 3", "2027-02-02 15:15:00", "MDA")
+    #data.add_new("T E S T 3", "2027-02-02 15:15:00", "MDA")
