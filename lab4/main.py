@@ -142,4 +142,4 @@ if __name__ == '__main__':
     print(f"\n{data[idx]}")
 
     # добавление строки
-    #data.add_new("T E S T 3", "2027-02-02 15:15:00", "MDA")
+    data.add_new("ABCD", "2027-01-01 15:11:00", "T")
