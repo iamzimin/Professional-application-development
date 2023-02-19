@@ -3,7 +3,7 @@ import Rectangle
 import Triangle
 
 if __name__ == '__main__':
-    # наследование: Figure является родительским классом Rectangle и Triangle
+    # наследование: Figure является родительским и абстрактным классом Rectangle и Triangle
     vec = [Rectangle.Rectangle(), Triangle.Triangle()]
 
     # полиморфизм
